@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginForm from "./components/form";
 
 
@@ -9,6 +9,8 @@ const Login = () => {
         email: "",
         password: ""
     }
+
+    const [ feedBack, setFeedBack ] = useState({}) 
 
     const formValidate = values => {
         const errors = {};
@@ -26,12 +28,15 @@ const Login = () => {
 
     const handleFormSubmit = values => {
         console.log(values);
+        setFeedBack({message: "Login Successfull", type: "success"});
+        return true
     }
     return(
         <LoginForm 
             initialValues={initialValues}
             formValidate={formValidate}
             handleFormSubmit={handleFormSubmit}
+            feedBack={feedBack}
         />
     )
 };
