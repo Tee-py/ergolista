@@ -1,9 +1,9 @@
 import React from "react";
-import { Form, Input, SubmitButton } from 'formik-antd';
+import { Input, Form, SubmitButton } from 'formik-antd';
 import { Row, Col } from 'antd';
 import { Formik, /*useFormikContext*/ } from "formik";
-import { Alert, Button, Space } from "antd";
-
+//import { Alert, Button, Space, Input } from "antd";
+import LoginForm from "./components/form";
 
 
 
@@ -40,39 +40,32 @@ const Login = () => {
             isValid,
             handleSubmit,
         }) => (
-            <Row align="middle">
-                <Col span={12} offset={6}>
-                    <Form onSubmit={handleSubmit}>
-                        
-                        <Input
-                            name="emailAddress"
-                            placeholder="Email Address"
-                            size="large"
-                        />
-                        <Input.Password
-                            name="password"
-                            placeholder="Password"
-                            size="large"
-                        />
-                        <SubmitButton
-                            type="primary"
-                            block
-                            size="large"
-                            className="mt-10"
-                        >
-                            SIGN IN
-                        </SubmitButton>
-                        <Button
-                            type="link"
-                            block
-                            size="middle"
-                            style={{ marginTop: "6px" }}
-                        >
-                            Forgot Password ?
-                        </Button>
-                    </Form>
-                </Col>
-            </Row>
+            <Form onSubmit={{handleFormSubmit}}>
+                <Row gutter={[24, 24]}>
+                    <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}></Col>
+                    <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}>
+                        <Input name="email" type="email" placeholder="Enter email" size="large" />
+                    </Col>
+                </Row>
+                <Row gutter={[24, 24]}>
+                    <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}></Col>
+                    <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}>
+                        <Input name="password" type="password" placeholder="Enter password" size="large" />
+                    </Col>
+                </Row>
+                <Row gutter={[24, 24]}>
+                    <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}></Col>
+                    <Col xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 8 }}>
+                      <SubmitButton
+                        type="danger"
+                        block
+                        disabled={!isValid}
+                      >
+                        Submit
+                      </SubmitButton>
+                    </Col>
+                </Row>
+            </Form> 
         )}
         </Formik>
     )
