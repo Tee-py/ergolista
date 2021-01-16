@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import RegisterForm from "./components/form";
+import { createUserRequest } from "../../network/auth";
 
 
 
@@ -31,8 +32,11 @@ const Register = () => {
 
     const handleFormSubmit = values => {
         console.log(values);
+        createUserRequest(values).then(
+            (resp)=>console.log(resp), err=>console.log(err)
+        )
         setFeedBack({message: "Registration Successfull", type: "success"});
-        return true
+        //return true
     }
     return(
         <RegisterForm 

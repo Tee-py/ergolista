@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import LoginForm from "./components/form";
-
-
+import { loginUserRequest } from "../../network/auth";
 
 const Login = () => {
 
@@ -28,8 +27,11 @@ const Login = () => {
 
     const handleFormSubmit = values => {
         console.log(values);
-        setFeedBack({message: "Login Successfull", type: "success"});
-        return true
+        loginUserRequest(values)
+            .then(
+                res=>console.log(res), 
+                ()=>{setFeedBack({message: "An Error Occured", type: "error"}); return true});
+        //return true
     }
     return(
         <LoginForm 

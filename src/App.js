@@ -1,11 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
 import Login from "./Pages/Login/index";
 import Register from "./Pages/Register/index";
 import { 
   BrowserRouter as Router, 
   Route, 
-  Link, 
+  //Link, 
   Switch 
 } from 'react-router-dom';
 
