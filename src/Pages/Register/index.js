@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import RegisterForm from "./components/form";
 import { createUserRequest } from "../../network/auth";
+import { useHistory } from "react-router-dom";
 
 
 
@@ -11,6 +12,8 @@ const Register = () => {
         password: "",
         username: ""
     }
+
+    let history = useHistory()
 
     const [ feedBack, setFeedBack ] = useState({}) 
 
@@ -33,7 +36,11 @@ const Register = () => {
     const handleFormSubmit = values => {
         //console.log(values);
         return createUserRequest(values).then(
-            (resp)=>console.log(resp), err=>setFeedBack({message: "An Error Occured", type: "error"})
+            (resp)=>{
+                setFeedBack({message: "Account created successfully.", type: "success"});
+                setTimeout(()=>history.push("/login"), 2000)
+            }, 
+            err=>setFeedBack({message: "An Error Occured", type: "error"})
         );
         //return true
     }
