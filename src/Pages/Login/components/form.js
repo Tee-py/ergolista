@@ -1,40 +1,52 @@
 import React from "react";
-import "../login.css";
+import { Formik, /*useFormikContext*/ } from "formik";
+import { Input, Form, SubmitButton } from 'formik-antd';
+import { Alert, Button, Space, Row, Col } from "antd";
 
-const allStyles = {
-    formWrap: {
-        display: "flex",
-        width: "50%",
-        justifyContent: "center",
-        flexDirection: "row'",
-    },
-    inputWrap: {
 
-    },
-    formInput: {
-
-    },
-    submitButton: {
-
-    }
-}
 
 const LoginForm = (props) => {
     return (
-        <div className="form-warp">
-            <form onSubmit={props.handleSubmit} >
-                {/*<div className="input-wrap">
-                    <input type="email" required="true" className="form-input" name="email" placeholder="Enter email">
-                    </input>
-                </div>
-                <div className="input-wrap">
-                    <input type="password" required="true" className="form-input" name="password" placeholder="Enter password">
-                    </input>
-                </div>
-                <input type="submit" className="sub-btn"></input>*/}
-            </form>
-            <h1>Hiiiii</h1>
-        </div>
+        <Formik
+        initialValues={props.initialValues}
+        validate={props.formValidate}
+        onSubmit={props.handleFormSubmit}
+        validateOnMount={true}
+        >
+        {({
+            isValid,
+            handleSubmit,
+        }) => (
+            <Row align="middle" justify="center" style={{height: "100vh"}}>
+                <Col xs={{ span: 24}} md={{ span:12 }} lg={{ span: 8}}>
+                    <Form onSubmit={{handleSubmit}} style={{padding: "2rem"}}>
+                        <Row gutter={[24, 24]}>
+                            <Col xs={{ span: 24}} md={{ span:24 }} lg={{ span: 24}}>
+                                <Input name="email" type="email" placeholder="Enter email" size="large" />
+                            </Col>
+                        </Row>
+                        <Row gutter={[24, 24]}>
+                            <Col xs={{ span: 24}} md={{ span:24 }} lg={{ span: 24}}>
+                                <Input name="password" type="password" placeholder="Enter password" size="large" />
+                            </Col>
+                        </Row>
+                        <Row gutter={[24, 24]}>
+                            <Col xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+                            <SubmitButton
+                                style={{backgroundColor: "#4287f5"}}
+                                block
+                                disabled={!isValid}
+                                size="large"
+                            >
+                                Login
+                            </SubmitButton>
+                            </Col>
+                        </Row>
+                    </Form>
+                </Col>
+            </Row> 
+        )}
+        </Formik>
     )
 };
 
