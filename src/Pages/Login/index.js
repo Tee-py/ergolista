@@ -27,10 +27,10 @@ const Login = () => {
 
     const handleFormSubmit = values => {
         console.log(values);
-        loginUserRequest(values)
+        return loginUserRequest(values)
             .then(
                 res=>console.log(res), 
-                ()=>{setFeedBack({message: "An Error Occured", type: "error"}); return true});
+                ()=>{setFeedBack({message: "An Error Occured", type: "error"})});
         //return true
     }
     return(
