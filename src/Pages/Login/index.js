@@ -26,7 +26,7 @@ const Login = () => {
     }
 
     const handleFormSubmit = values => {
-        console.log(values);
+        //console.log(values);
         return loginUserRequest(values)
             .then(
                 res=>console.log(res), 

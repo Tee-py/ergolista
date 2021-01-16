@@ -31,11 +31,10 @@ const Register = () => {
     }
 
     const handleFormSubmit = values => {
-        console.log(values);
-        createUserRequest(values).then(
-            (resp)=>console.log(resp), err=>console.log(err)
-        )
-        setFeedBack({message: "Registration Successfull", type: "success"});
+        //console.log(values);
+        return createUserRequest(values).then(
+            (resp)=>console.log(resp), err=>setFeedBack({message: "Registration Successfull", type: "success"})
+        );
         //return true
     }
     return(
