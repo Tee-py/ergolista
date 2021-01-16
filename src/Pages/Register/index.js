@@ -33,7 +33,7 @@ const Register = () => {
     const handleFormSubmit = values => {
         //console.log(values);
         return createUserRequest(values).then(
-            (resp)=>console.log(resp), err=>setFeedBack({message: "Registration Successfull", type: "success"})
+            (resp)=>console.log(resp), err=>setFeedBack({message: "An Error Occured", type: "error"})
         );
         //return true
     }
