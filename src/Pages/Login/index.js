@@ -26,7 +26,6 @@ const Login = () => {
     }
 
     const handleFormSubmit = values => {
-        //console.log(values);
         return loginUserRequest(values)
             .then(
                 res=>{
