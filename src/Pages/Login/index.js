@@ -29,10 +29,16 @@ const Login = () => {
         //console.log(values);
         return loginUserRequest(values)
             .then(
-                res=>console.log(res), 
-                ()=>{setFeedBack({message: "An Error Occured", type: "error"})});
-        //return true
-    }
+                res=>{
+                    setFeedBack({message: "Login Successfull", type: "success"}); 
+                    localStorage.setItem("userData", JSON.stringify(res.data))
+                }, 
+                err=>{
+                    console.log(err); 
+                    setFeedBack({message: "An Error Occured", type: "error"})
+                }
+            );
+        }
     return(
         <LoginForm 
             initialValues={initialValues}
