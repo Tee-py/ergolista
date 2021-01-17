@@ -12,27 +12,25 @@ import {
 
 const { SubMenu } = Menu;
 
- export const SideMenu = () => {
-  
+export const SideMenu = () => {
+    
+    const [ toggleState, setToggleState ] = useState(true)
 
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  };
+    const handleClick = () => {
+        setToggleState(!toggleState);
+    }
 
-  render() {
     return (
       <div style={{ width: 256 }}>
-        <Button type="primary" onClick={this.toggleCollapsed} style={{ marginBottom: 16 }}>
-          {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined)}
+        <Button type="primary" onClick={handleClick} style={{ marginBottom: 16 }}>
+          {React.createElement(this.toggleState ? MenuUnfoldOutlined : MenuFoldOutlined)}
         </Button>
         <Menu
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
-          inlineCollapsed={this.state.collapsed}
+          inlineCollapsed={toggleState}
         >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Option 1
@@ -60,7 +58,4 @@ const { SubMenu } = Menu;
         </Menu>
       </div>
     );
-  }
-}
-
-ReactDOM.render(<App />, mountNode);
+};
