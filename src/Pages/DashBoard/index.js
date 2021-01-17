@@ -16,7 +16,6 @@ const DashBoard = () => {
 
     return (
         <>
-            <Nav />
             <SideMenu />
         </>
     )
