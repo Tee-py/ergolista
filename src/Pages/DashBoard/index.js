@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import NavBar from "./components/nav";
 import SideMenu from "./components/sidemenu";
+import ProjectView from "./components/project";
 import { Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
+//import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 
 
@@ -22,8 +23,12 @@ const DashBoard = () => {
 
     return (
         <>
-            <NavBar handleClick={handleClick} />        
-            <SideMenu toggleState={toggleState} />
+            <NavBar handleClick={handleClick} />
+            <div style={{display: "flex"}}>
+                <SideMenu toggleState={toggleState} />
+                <ProjectView />
+            </div>        
+            
         </>
     )
 };
