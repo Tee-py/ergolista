@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Nav from "./components/nav";
+import NavBar from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import { Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
@@ -16,6 +16,7 @@ const DashBoard = () => {
 
     return (
         <>
+            <NavBar />        
             <SideMenu />
         </>
     )
