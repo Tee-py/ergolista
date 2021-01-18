@@ -13,25 +13,18 @@ import {
 
 const { SubMenu } = Menu;
 
-const SideMenu = () => {
+const SideMenu = (props) => {
     
-    const [ toggleState, setToggleState ] = useState(true)
-
-    const handleClick = () => {
-        setToggleState(!toggleState);
-    }
+    
 
     return (
       <div style={{ width: 256 }}>
-        <Button type="primary" onClick={handleClick} style={{ marginBottom: 16 }}>
-          {React.createElement(toggleState ? MenuUnfoldOutlined : MenuFoldOutlined)}
-        </Button>
         <Menu
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
           mode="inline"
           theme="dark"
-          inlineCollapsed={toggleState}
+          inlineCollapsed={props.toggleState}
           style={{height: "100vh"}}
         >
           <SubMenu key="sub1" icon={<ScheduleOutlined />} title="Projects">

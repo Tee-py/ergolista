@@ -8,16 +8,22 @@ import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/ico
 
 const DashBoard = () => {
 
-    const { SubMenu } = Menu;
+    const [ toggleState, setToggleState ] = useState(true)
 
     const handleClick = () => {
-        console.log("I was clicked")
+        setToggleState(!toggleState);
     }
+
+    const { SubMenu } = Menu;
+
+    //const handleClick = () => {
+    //    console.log("I was clicked")
+    //}
 
     return (
         <>
-            <NavBar />        
-            <SideMenu />
+            <NavBar handleClick={handleClick} />        
+            <SideMenu toggleState={toggleState} />
         </>
     )
 };
