@@ -10,9 +10,15 @@ import { Menu } from 'antd';
 const DashBoard = () => {
 
     const [ toggleState, setToggleState ] = useState(true)
+    const [ menuWidth, setMenuWidth ] = useState("");
 
     const handleClick = () => {
         setToggleState(!toggleState);
+        if (menuWidth === ""){
+            setMenuWidth(256)
+        } else {
+            setMenuWidth("")
+        }
     }
 
     const { SubMenu } = Menu;
@@ -25,7 +31,7 @@ const DashBoard = () => {
         <>
             <NavBar handleClick={handleClick} />
             <div style={{display: "flex"}}>
-                <SideMenu toggleState={toggleState} />
+                <SideMenu toggleState={toggleState} menuWidth={menuWidth} />
                 <ProjectView />
             </div>        
             

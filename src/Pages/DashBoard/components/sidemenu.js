@@ -18,7 +18,7 @@ const SideMenu = (props) => {
     
 
     return (
-      <div style={{ width: 256 }}>
+      <div style={{ width: props.menuWidth }}>
         <Menu
           defaultSelectedKeys={['1']}
           defaultOpenKeys={['sub1']}
