@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginForm from "./components/form";
+import { useHistory } from "react-router-dom";
 import { loginUserRequest } from "../../network/auth";
 
 const Login = () => {
@@ -8,6 +9,8 @@ const Login = () => {
         email: "",
         password: ""
     }
+
+    let history = useHistory()
 
     const [ feedBack, setFeedBack ] = useState({}) 
 
@@ -30,7 +33,9 @@ const Login = () => {
             .then(
                 res=>{
                     setFeedBack({message: "Login Successfull", type: "success"}); 
-                    localStorage.setItem("userData", JSON.stringify(res.data))
+                    localStorage.setItem("userData", JSON.stringify(res.data));
+                    setTimeout(()=>history.push("/dashboard"), 2000);
+                    
                 }, 
                 err=>{
                     console.log(err); 
