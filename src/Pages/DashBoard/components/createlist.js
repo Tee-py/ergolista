@@ -5,6 +5,7 @@ import { ProjectOutlined } from '@ant-design/icons';
 import { isEmptyArray } from 'formik';
 
 
+
 const CreateListModal = (props) => {
 
   const [ modalState, setModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
@@ -13,9 +14,13 @@ const CreateListModal = (props) => {
     setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
   }
 
-  const createList = () => {
-      console.log(modalState.currentName);
+  const handleButtonClick = () => {
       setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
+      props.createListRequest({name:modalState.currentName}).then(
+        resp=>{
+          console.log(resp.data);
+          setModalState({buttonState: false, currentName: "", isLoading: false});
+        })
   }
   
   return (
@@ -32,7 +37,7 @@ const CreateListModal = (props) => {
           type="primary" 
           block style={{marginTop: "1rem"}} 
           disabled={!modalState.buttonState}
-          onClick={createList}
+          onClick={handleButtonClick}
           loading={modalState.isLoading}
         >
             Submit

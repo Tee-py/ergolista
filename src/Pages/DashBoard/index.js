@@ -3,7 +3,7 @@ import NavBar from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import ProjectView from "./components/project";
 import { Menu } from 'antd';
-import { fetchUserListRequest } from "../../network/user";
+import { fetchUserListRequest, createListRequest } from "../../network/user";
 import CreateListModal from "./components/createlist";
 //import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
@@ -28,6 +28,10 @@ const DashBoard = () => {
     const handleCancel = () => {
         setIsModalVisible(false);
     };
+
+    //const createList = (data) => {
+    //    createListRequest(data).then(resp=>console.log(resp.data));
+    //}
 
 
     useEffect(()=>{
@@ -59,9 +63,10 @@ const DashBoard = () => {
                 handleCancel={handleCancel}
                 handleOk={handleOk}
                 isModalVisible={isModalVisible}
+                createListRequest={createListRequest}
             />
             <div style={{display: "flex"}}>
-                <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList = {userList} />
+                <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList={userList} />
                 <ProjectView />
             </div>        
             
