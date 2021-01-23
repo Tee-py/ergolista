@@ -19,18 +19,23 @@ const DashBoard = () => {
 
     const [ modalState, setModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
 
+    const [createListFeedBack, setCreateListFeedBack ] = useState({});
+
     const changeCurrentValue = (value) => {
       setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
     }
 
-  const handleButtonClick = () => {
-      setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
-      createListRequest({name:modalState.currentName}).then(
-        resp=>{
-          setModalState({buttonState: false, currentName: "", isLoading: false});
-          setUserList(userList.concat(resp.data))
-        })
-  }
+    const handleButtonClick = () => {
+        setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
+        createListRequest({name:modalState.currentName}).then(
+            resp=>{
+            setCreateListFeedBack({message: "Successfully Created", type: "success"});
+            setModalState({buttonState: false, currentName: "", isLoading: false});
+            setUserList(userList.concat(resp.data))
+            setIsModalVisible(false)},
+            err=>setCreateListFeedBack({message: "An Error Occured. Please Try Again", type: "error"})
+        )
+    }
 
     const showModal = () => {
         setIsModalVisible(true);
@@ -82,6 +87,7 @@ const DashBoard = () => {
                 handleButtonClick={handleButtonClick}
                 modalState={modalState}
                 changeCurrentValue={changeCurrentValue}
+                feedBack={createListFeedBack}
             />
             <div style={{display: "flex"}}>
                 <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList={userList} />

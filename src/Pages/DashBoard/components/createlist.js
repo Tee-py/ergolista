@@ -3,13 +3,12 @@ import { Modal, Button } from 'antd';
 import { Input } from 'antd';
 import { ProjectOutlined } from '@ant-design/icons';
 import { isEmptyArray } from 'formik';
+import { Alert } from 'antd';
 
 
 
 const CreateListModal = (props) => {
 
-  
-  
   return (
     <>
       <Modal title="Create Project" 
@@ -19,6 +18,7 @@ const CreateListModal = (props) => {
         footer={""} 
         centered
       >
+        {props.feedBack.message ? <Alert message={props.feedBack.message} type={props.feedBack.type} style={{marginBottom: "1rem"}} showIcon /> : ""}
         <Input size="large" onChange={(e)=>props.changeCurrentValue(e.currentTarget.value)} placeholder="Project Name" prefix={<ProjectOutlined />} />
         <Button 
           type="primary" 
