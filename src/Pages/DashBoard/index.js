@@ -33,7 +33,10 @@ const DashBoard = () => {
             setModalState({buttonState: false, currentName: "", isLoading: false});
             setUserList(userList.concat(resp.data))
             setIsModalVisible(false)},
-            err=>setCreateListFeedBack({message: "An Error Occured. Please Try Again", type: "error"})
+            err=>{
+                setCreateListFeedBack({message: "An Error Occured. Please Try Again", type: "error"});
+                setModalState({buttonState: true, currentName: modalState.currentName, isLoading: false});
+            }
         )
     }
 

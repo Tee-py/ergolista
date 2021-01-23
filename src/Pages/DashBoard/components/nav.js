@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   menuButton: {
-    marginRight: theme.spacing(2),
+    marginRight: "",
   },
   title: {
     display: 'none',
@@ -164,10 +164,10 @@ export default function NavBar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography variant="h6" style={{color: "white"}} noWrap>
             ErgoLista
           </Typography>
-          <div className={classes.search}>
+          {/*<div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -179,9 +179,9 @@ export default function NavBar(props) {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
-          </div>
+          </div>*/}
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
+          <div>
             <IconButton aria-label="show 17 new notifications" color="inherit" onClick={props.showModal}>
               <AddIcon />
             </IconButton>
@@ -196,7 +196,7 @@ export default function NavBar(props) {
               <AccountCircle />
             </IconButton>
           </div>
-          <div className={classes.sectionMobile}>
+         {/*<div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -206,7 +206,7 @@ export default function NavBar(props) {
             >
               <MoreIcon />
             </IconButton>
-          </div>
+            </div>*/}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
