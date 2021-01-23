@@ -36,7 +36,7 @@ const DashBoard = () => {
 
     useEffect(()=>{
         fetchUserListRequest().then(
-            resp=>{ setUserList(resp.data.lists) },
+            resp=>{ setUserList(resp.data.lists); console.log(resp.data.lists) },
             err=>console.log(err)
         )
     }, [])

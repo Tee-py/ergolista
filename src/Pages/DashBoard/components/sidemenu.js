@@ -28,9 +28,9 @@ const SideMenu = (props) => {
           style={{height: "100vh"}}
         >
           <SubMenu key="sub1" icon={<ScheduleOutlined />} title="Projects">
-            <Menu.Item key="5" icon={<TagsOutlined />}>E-Commerce App</Menu.Item>
-            <Menu.Item key="6" icon={<TagsOutlined />}>Trading Bot</Menu.Item>
-            <Menu.Item key="7" icon={<TagsOutlined />}>Telegram Bot</Menu.Item>
+            {
+              props.userList.map(list=><Menu.Item key={list.id} icon={<TagsOutlined />}>{list.name}</Menu.Item>)
+            }
           </SubMenu>
           <SubMenu key="sub2" icon={<SettingOutlined />} title="Account">
             <Menu.Item key="9" icon={<UserOutlined />}>Profile</Menu.Item>
