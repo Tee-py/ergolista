@@ -18,7 +18,6 @@ const DashBoard = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
-        console.log("Yesss")
         setIsModalVisible(true);
     };
 
