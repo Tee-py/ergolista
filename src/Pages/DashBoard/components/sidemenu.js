@@ -15,8 +15,6 @@ const { SubMenu } = Menu;
 
 const SideMenu = (props) => {
     
-    
-
     return (
       <div style={{ width: props.menuWidth }}>
         <Menu

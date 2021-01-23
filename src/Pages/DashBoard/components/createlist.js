@@ -8,20 +8,7 @@ import { isEmptyArray } from 'formik';
 
 const CreateListModal = (props) => {
 
-  const [ modalState, setModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
-
-  const changeCurrentValue = (value) => {
-    setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
-  }
-
-  const handleButtonClick = () => {
-      setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
-      props.createListRequest({name:modalState.currentName}).then(
-        resp=>{
-          console.log(resp.data);
-          setModalState({buttonState: false, currentName: "", isLoading: false});
-        })
-  }
+  
   
   return (
     <>
@@ -32,13 +19,13 @@ const CreateListModal = (props) => {
         footer={""} 
         centered
       >
-        <Input size="large" onChange={(e)=>changeCurrentValue(e.currentTarget.value)} placeholder="Project Name" prefix={<ProjectOutlined />} />
+        <Input size="large" onChange={(e)=>props.changeCurrentValue(e.currentTarget.value)} placeholder="Project Name" prefix={<ProjectOutlined />} />
         <Button 
           type="primary" 
           block style={{marginTop: "1rem"}} 
-          disabled={!modalState.buttonState}
-          onClick={handleButtonClick}
-          loading={modalState.isLoading}
+          disabled={!props.modalState.buttonState}
+          onClick={props.handleButtonClick}
+          loading={props.modalState.isLoading}
         >
             Submit
         </Button>

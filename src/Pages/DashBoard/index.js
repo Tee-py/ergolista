@@ -17,6 +17,21 @@ const DashBoard = () => {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
+    const [ modalState, setModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
+
+    const changeCurrentValue = (value) => {
+      setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
+    }
+
+  const handleButtonClick = () => {
+      setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
+      createListRequest({name:modalState.currentName}).then(
+        resp=>{
+          setModalState({buttonState: false, currentName: "", isLoading: false});
+          setUserList(userList.concat(resp.data))
+        })
+  }
+
     const showModal = () => {
         setIsModalVisible(true);
     };
@@ -64,6 +79,9 @@ const DashBoard = () => {
                 handleOk={handleOk}
                 isModalVisible={isModalVisible}
                 createListRequest={createListRequest}
+                handleButtonClick={handleButtonClick}
+                modalState={modalState}
+                changeCurrentValue={changeCurrentValue}
             />
             <div style={{display: "flex"}}>
                 <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList={userList} />

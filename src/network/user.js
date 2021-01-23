@@ -12,6 +12,8 @@ export const fetchUserListRequest = () => {
     })
 };
 
+console.log(token)
+
 export const createListRequest = (payload) => {
     return axios.post("lists/create", payload, {
         headers: {
