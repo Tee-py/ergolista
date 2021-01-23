@@ -10,3 +10,5 @@ export const fetchUserListRequest = () => {
         }
     })
 };
+
+export const createListRequest = (payload)

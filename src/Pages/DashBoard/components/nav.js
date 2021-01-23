@@ -133,7 +133,7 @@ export default function NavBar(props) {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton aria-label="show 11 new notifications" color="inherit" onClick={props.showModal}>
           <AddIcon />
         </IconButton>
       </MenuItem>
@@ -182,7 +182,7 @@ export default function NavBar(props) {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <IconButton aria-label="show 17 new notifications" color="inherit" onClick={props.showModal}>
               <AddIcon />
             </IconButton>
             <IconButton

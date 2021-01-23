@@ -18,6 +18,7 @@ const DashBoard = () => {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const showModal = () => {
+        console.log("Yesss")
         setIsModalVisible(true);
     };
 
@@ -54,11 +55,11 @@ const DashBoard = () => {
 
     return (
         <>
-            <NavBar handleClick={handleClick} />
+            <NavBar handleClick={handleClick} showModal={showModal} />
             <CreateListModal 
-                showModal={showModal}
                 handleCancel={handleCancel}
                 handleOk={handleOk}
+                isModalVisible={isModalVisible}
             />
             <div style={{display: "flex"}}>
                 <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList = {userList} />

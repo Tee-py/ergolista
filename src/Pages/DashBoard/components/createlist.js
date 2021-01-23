@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
+import { Input } from 'antd';
+import { ProjectOutlined } from '@ant-design/icons';
 
 const CreateListModal = (props) => {
   
   return (
     <>
-      <Button type="primary" onClick={props.showModal}>
-        Open Modal
-      </Button>
-      <Modal title="Basic Modal" visible={props.isModalVisible} onOk={props.handleOk} onCancel={props.handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title="Create Project" visible={props.isModalVisible} onOk={props.handleOk} onCancel={props.handleCancel} centered>
+        <Input size="large" placeholder="Project Name" prefix={<ProjectOutlined />} />
       </Modal>
     </>
   );
