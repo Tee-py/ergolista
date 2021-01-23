@@ -1,3 +1,3 @@
 export const grabUserToken = () => {
-    return localStorage.getItem("userData");
+    return JSON.parse(localStorage.getItem("userData"));
 };
