@@ -18,12 +18,12 @@ const DashBoard = () => {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const [ modalState, setModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
+    const [ listModalState, setListModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
 
     const [createListFeedBack, setCreateListFeedBack ] = useState({});
 
-    const changeCurrentValue = (value) => {
-      setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
+    const changeCurrentListValue = (value) => {
+      setListModalState({buttonState: !!value, currentName: value, isLoading: listModalState.isLoading});
     }
 
     const changeCurrentList = (key, e) => {
@@ -34,21 +34,21 @@ const DashBoard = () => {
     }
 
     const handleButtonClick = () => {
-        setModalState({buttonState: modalState.buttonState, currentName: modalState.currentName, isLoading: true});
-        createListRequest({name:modalState.currentName}).then(
+        setListModalState({buttonState: listModalState.buttonState, currentName: listModalState.currentName, isLoading: true});
+        createListRequest({name: listModalState.currentName}).then(
             resp=>{
             setCreateListFeedBack({message: "Successfully Created", type: "success"});
-            setModalState({buttonState: false, currentName: "", isLoading: false});
+            setListModalState({buttonState: false, currentName: "", isLoading: false});
             setUserList(userList.concat(resp.data))
             setIsModalVisible(false)},
             err=>{
                 setCreateListFeedBack({message: "An Error Occured. Please Try Again", type: "error"});
-                setModalState({buttonState: true, currentName: modalState.currentName, isLoading: false});
+                setListModalState({buttonState: true, currentName: listModalState.currentName, isLoading: false});
             }
         )
     }
 
-    const showModal = () => {
+    const showListModal = () => {
         setIsModalVisible(true);
     };
 
@@ -93,15 +93,15 @@ const DashBoard = () => {
 
     return (
         <>
-            <NavBar handleClick={handleClick} showModal={showModal} />
+            <NavBar handleClick={handleClick} showModal={showListModal} />
             <CreateListModal 
                 handleCancel={handleCancel}
                 handleOk={handleOk}
                 isModalVisible={isModalVisible}
                 createListRequest={createListRequest}
                 handleButtonClick={handleButtonClick}
-                modalState={modalState}
-                changeCurrentValue={changeCurrentValue}
+                modalState={listModalState}
+                changeCurrentValue={changeCurrentListValue}
                 feedBack={createListFeedBack}
             />
             <div style={{display: "flex"}}>
