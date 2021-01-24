@@ -27,15 +27,15 @@ export default function ProjectView(props) {
             status="404"
             title=""
             subTitle="You Have not Added Any Task for This Project."
-            extra={<Button type="primary">Add Task</Button>}
+            extra={<Button type="primary" onClick={props.showModal}>Add Task</Button>}
           /> : <></>
       }
       <Grid container spacing={1} style={{padding: "1rem"}}>
-        {props.currentList.tasks?.map(task=>{
+        {props.currentList.tasks?.map(task=>
           <Grid item xs={12}>
            <Paper className={classes.paper}>{task.name}</Paper>
           </Grid>
-        })}
+        )}
       </Grid>
     </div>
   );

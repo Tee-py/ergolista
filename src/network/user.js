@@ -4,7 +4,6 @@ import { grabUserToken } from "../utils/utils";
 var token = grabUserToken();
 
 export const fetchUserListRequest = () => {
-    //console.log(token.access_token);
     return axios.get("/lists", {
         headers: {
             Authorization: `Bearer ${token.access_token}`
@@ -12,10 +11,17 @@ export const fetchUserListRequest = () => {
     })
 };
 
-//console.log(token)
-
 export const createListRequest = (payload) => {
     return axios.post("lists/create", payload, {
+        headers: {
+            Authorization: `Bearer ${token.access_token}`,
+            "Content-Type": "application/json"
+        }
+    });
+};
+
+export const createTaskRequest = (payload, list_id) => {
+    return axios.post(`${list_id}/tasks/create`, payload, {
         headers: {
             Authorization: `Bearer ${token.access_token}`,
             "Content-Type": "application/json"

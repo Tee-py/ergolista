@@ -11,15 +11,14 @@ const CreateTaskModal = (props) => {
 
   return (
     <>
-      <Modal title="Create Project" 
+      <Modal title="Add Task" 
         visible={props.isModalVisible} 
-        onOk={props.handleOk} 
         onCancel={props.handleCancel}
         footer={""} 
         centered
       >
         {props.feedBack.message ? <Alert message={props.feedBack.message} type={props.feedBack.type} style={{marginBottom: "1rem"}} showIcon /> : ""}
-        <Input size="large" onChange={(e)=>props.changeCurrentValue(e.currentTarget.value)} placeholder="Project Name" prefix={<ProjectOutlined />} />
+        <Input size="large" onChange={(e)=>props.changeCurrentValue(e.currentTarget.value)} placeholder="Task Name" prefix={<ProjectOutlined />} />
         <Button 
           type="primary" 
           block style={{marginTop: "1rem"}} 
