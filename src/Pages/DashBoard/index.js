@@ -14,6 +14,7 @@ const DashBoard = () => {
     const [ toggleState, setToggleState ] = useState(true);
     const [ menuWidth, setMenuWidth ] = useState("");
     const [ userList, setUserList ] = useState([]);
+    const [ currentList, setCurrentList ] = useState({});
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -23,6 +24,13 @@ const DashBoard = () => {
 
     const changeCurrentValue = (value) => {
       setModalState({buttonState: !!value, currentName: value, isLoading: modalState.isLoading});
+    }
+
+    const changeCurrentList = (key, e) => {
+        var selectedList = userList.filter(list=>list.id==key.key);
+        if (selectedList.length>0){
+            setCurrentList(selectedList[0]);
+        }
     }
 
     const handleButtonClick = () => {
@@ -59,7 +67,11 @@ const DashBoard = () => {
 
     useEffect(()=>{
         fetchUserListRequest().then(
-            resp=>{ setUserList(resp.data.lists); console.log(resp.data.lists) },
+            resp=>{ 
+                setUserList(resp.data.lists);
+                if (resp.data.lists.length>0){
+                    setCurrentList(resp.data.lists[0])
+                } },
             err=>console.log(err)
         )
     }, [])
@@ -93,8 +105,14 @@ const DashBoard = () => {
                 feedBack={createListFeedBack}
             />
             <div style={{display: "flex"}}>
-                <SideMenu toggleState={toggleState} menuWidth={menuWidth} userList={userList} />
-                <ProjectView />
+                <SideMenu 
+                  toggleState={toggleState} 
+                  menuWidth={menuWidth} 
+                  changeCurrentList={changeCurrentList}
+                  currentList={currentList}
+                  userList={userList} 
+                />
+                <ProjectView currentList={currentList} />
             </div>        
             
         </>

@@ -14,12 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProjectView() {
+export default function ProjectView(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <h1 style={{textAlign: "center", padding: "1rem"}}>E-COMMERCE WEBSITE</h1>
+      <h1 style={{textAlign: "center", padding: "1rem"}}>{props.currentList.name}</h1>
       <Grid container spacing={1} style={{padding: "1rem"}}>
         <Grid item xs={12}>
           <Paper className={classes.paper}>Set Up Project</Paper>
