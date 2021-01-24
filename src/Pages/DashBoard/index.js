@@ -27,6 +27,7 @@ const DashBoard = () => {
     const [ taskModalState, setTaskModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
     const [createTaskFeedBack, setCreateTaskFeedBack ] = useState({});
 
+ 
 
     //Function to Change the current Value of the CreateProject Modal Input
     const changeCurrentListValue = (value) => {
@@ -76,12 +77,17 @@ const DashBoard = () => {
             resp=>{
             setCreateTaskFeedBack({message: "Successfully Created", type: "success"});
             setTaskModalState({buttonState: false, currentName: "", isLoading: false});
-            fetchUserListRequest().then(
+            var newTasks = currentList.tasks.concat(resp.data);
+            var newList = currentList;
+            newList.tasks = newTasks;
+            setCurrentList(newList)
+            /*fetchUserListRequest().then(
                 res=>{ 
-                    setUserList(res.data.lists);
+                    updateUserList(res.data.lists);
+                    console.log(res.data.lists)
                 },
                 err=>console.log(err)
-            )
+            )*/
             setIsTaskModalVisible(false)},
             err=>{
                 setCreateTaskFeedBack({message: "An Error Occured. Please Try Again", type: "error"});
