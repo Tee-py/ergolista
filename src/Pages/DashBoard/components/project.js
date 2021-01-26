@@ -30,7 +30,7 @@ export default function ProjectView(props) {
       <Grid container spacing={1} style={{padding: "1rem"}}>
         {props.currentList.tasks?.map(task=>
           <Grid item xs={12}>
-           <Paper className={classes.paper}>{task.name}</Paper>
+           <Paper className={classes.paper} style={{color: "blackwha"}}>{task.name}</Paper>
           </Grid>
         )}
         <Button type="primary" onClick={props.showModal} style={{marginTop: "1rem"}}>Add Task</Button>

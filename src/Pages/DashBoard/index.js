@@ -81,13 +81,6 @@ const DashBoard = () => {
             var newList = currentList;
             newList.tasks = newTasks;
             setCurrentList(newList)
-            /*fetchUserListRequest().then(
-                res=>{ 
-                    updateUserList(res.data.lists);
-                    console.log(res.data.lists)
-                },
-                err=>console.log(err)
-            )*/
             setIsTaskModalVisible(false)},
             err=>{
                 setCreateTaskFeedBack({message: "An Error Occured. Please Try Again", type: "error"});
