@@ -1,8 +1,8 @@
 export const grabUserToken = () => {
-    return JSON.parse(localStorage.getItem("userData"));
+    return JSON.parse(sessionStorage.getItem("userData"));
 };
 
 export const deleteUserToken = () => {
-    localStorage.setItem("userData", null);
+    sessionStorage.setItem("userData", JSON.stringify({}));
     return true
 };

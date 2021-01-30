@@ -28,9 +28,7 @@ const DashBoard = () => {
     const [ taskModalState, setTaskModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
     const [createTaskFeedBack, setCreateTaskFeedBack ] = useState({});
 
-    const history = useHistory()
-
- 
+    
 
     //Function to Change the current Value of the CreateProject Modal Input
     const changeCurrentListValue = (value) => {
@@ -69,7 +67,7 @@ const DashBoard = () => {
             resp=>{
                 console.log(resp.data);
                 deleteUserToken();
-                return history.push("/login");
+                window.location.pathname = "/login";
             },
             err=>console.log(err)
         )

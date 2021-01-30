@@ -10,7 +10,7 @@ const Login = () => {
         password: ""
     }
 
-    let history = useHistory()
+    let history = useHistory();
 
     const [ feedBack, setFeedBack ] = useState({}) 
 
@@ -34,7 +34,7 @@ const Login = () => {
                 res=>{
                     setFeedBack({message: "Login Successfull", type: "success"}); 
                     //console.log(res.data)
-                    localStorage.setItem("userData", JSON.stringify(res.data));
+                    sessionStorage.setItem("userData", JSON.stringify(res.data));
                     setTimeout(()=>history.push("/dashboard"), 2000);
                     
                 }, 
