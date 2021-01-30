@@ -28,3 +28,12 @@ export const createTaskRequest = (payload, list_id) => {
         }
     });
 };
+
+export const logoutRequest = () => {
+    return axios.post('/logout', null, 
+    {
+        headers: {
+            Authorization: `Bearer ${token.access_token}`,
+        }
+    })
+};

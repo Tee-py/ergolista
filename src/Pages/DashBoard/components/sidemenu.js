@@ -18,7 +18,11 @@ const { SubMenu } = Menu;
 const SideMenu = (props) => {
 
   const testClick = (key, e) => {
-    console.log(key.domEvent);
+    if (key.key==="lgout"){
+      props.logout();
+    } else {
+      props.changeCurrentList(key, e);
+    }
   }
     
     return (
@@ -26,7 +30,7 @@ const SideMenu = (props) => {
         <Menu
           defaultSelectedKeys={[props.currentList.id]}
           defaultOpenKeys={['proj', "acct"]}
-          onClick={props.changeCurrentList}
+          onClick={testClick}
           mode="inline"
           theme="dark"
           inlineCollapsed={props.toggleState}

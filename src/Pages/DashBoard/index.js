@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useHistory } from "react";
 import NavBar from "./components/nav";
 import SideMenu from "./components/sidemenu";
 import ProjectView from "./components/project";
 import { Menu } from 'antd';
-import { fetchUserListRequest, createListRequest, createTaskRequest } from "../../network/user";
+import { fetchUserListRequest, createListRequest, createTaskRequest, logoutRequest } from "../../network/user";
 import CreateListModal from "./components/createlist";
 import CreateTaskModal from "./components/createtask";
+import { deleteUserToken } from "../../utils/utils";
 //import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
 
@@ -26,6 +27,8 @@ const DashBoard = () => {
     const [isTaskModalVisible, setIsTaskModalVisible] = useState(false);
     const [ taskModalState, setTaskModalState ] = useState({buttonState: false, currentName: "", isLoading: false});
     const [createTaskFeedBack, setCreateTaskFeedBack ] = useState({});
+
+    const history = useHistory()
 
  
 
@@ -60,6 +63,17 @@ const DashBoard = () => {
     const showListModal = () => {
         setIsListModalVisible(true);
     };
+
+    const handleLogout = () => {
+        logoutRequest().then(
+            resp=>{
+                console.log(resp.data);
+                deleteUserToken();
+                return history.push("/login");
+            },
+            err=>console.log(err)
+        )
+    }
 
     //Function to Change the current Value of the Add Task Modal Input
     const changeCurrentTaskValue = (value) => {
@@ -151,7 +165,8 @@ const DashBoard = () => {
                   menuWidth={menuWidth} 
                   changeCurrentList={changeCurrentList}
                   currentList={currentList}
-                  userList={userList} 
+                  userList={userList}
+                  logout={handleLogout} 
                 />
                 <ProjectView currentList={currentList} showModal={showTaskModal} />
             </div>        
