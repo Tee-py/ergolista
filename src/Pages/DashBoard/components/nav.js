@@ -117,7 +117,7 @@ export default function NavBar(props) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={props.logout}>Logout</MenuItem>
     </Menu>
   );
 

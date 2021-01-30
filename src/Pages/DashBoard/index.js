@@ -138,7 +138,7 @@ const DashBoard = () => {
 
     return (
         <>
-            <NavBar handleClick={handleClick} showModal={showListModal} />
+            <NavBar handleClick={handleClick} showModal={showListModal} logout={handleLogout} />
             <CreateListModal 
                 handleCancel={handleListModalCancel}
                 isModalVisible={isListModalVisible}
